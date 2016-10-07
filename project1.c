@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 	input = removeDuplicates(input);
     initializeEncryptArray(input, encrypt);
     initializeDecryptArray(encrypt, decrypt);
-    if(!argv[2]) { //if 0 encrypt
+    if(atoi(argv[2]) == 0) { //if 0 encrypt
         processInput(in, out, encrypt);
     } else { //else decrypt
         processInput(in, out, decrypt);
@@ -88,6 +88,10 @@ void initializeDecryptArray(char encrypt[], char decrypt[]) {
 //initialize decrypt array with appropriate sub letters based on encrypt
     for(int d = 0; d < 26; d++) {
         decrypt[encrypt[d]-65] = (d+65);
+    }
+    printf("\n");
+    for(char l = 'A'; l <= 'Z'; l++){
+        printf("DECRYPT ARRAY: %c -> %c\n", l, decrypt[(l-65)]);
     }
 }
 
